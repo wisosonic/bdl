@@ -1,0 +1,57 @@
+.locationLabel {
+    color: #0e1b4d;
+}
+
+.register-btn {
+    color: #fff !important;
+    background: #f82249;
+    padding: 7px 22px;
+    border-radius: 50px;
+    border: 2px solid #f82249;
+    transition: all ease-in-out 0.3s;
+    font-weight: 500;
+    margin-left: 8px;
+    margin-top: 2px;
+    line-height: 20px;
+    font-size: 16px;
+    width: 15%;
+}
+.register-btn:hover {
+    background: none !important;
+    color: white !important;
+}
+a.register-btn:active {
+    color: white !important;
+}
+
+.alert-workshop {
+    color: white;
+    background-color: transparent;
+    border-color: #f82249;
+}
+
+/* .badge-warning {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+} */
+
+#sponsors .sponsors-wrap .details {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-top: 10px;
+    bottom: 5%;
+    font-size: 20px;
+}
+
+.sponsor-platinum {
+    height: 250px !important;
+}
+
+@media (max-width: 767px) {
+    #schedule .schedule-item .speaker {
+        margin: 0 10px 30% 0 !important;
+    }
+}

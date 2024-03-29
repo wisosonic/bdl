@@ -12,7 +12,7 @@
             <a data-bs-toggle="modal" data-bs-target="#exampleModalToggle2" href="#" >Register Now</a>
         </li>
         @foreach ($alt_lang_tr as $index => $l)
-            <li><a href="?lang={{$alt_lang[$index]}}">{{$l}}</a></li>
+            <!-- <li><a href="?lang={{$alt_lang[$index]}}">{{$l}}</a></li> -->
         @endforeach
     </ul>
 </nav><!-- #nav-menu-container -->

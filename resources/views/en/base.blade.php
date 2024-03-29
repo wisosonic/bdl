@@ -13,23 +13,23 @@
   <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="/css/fonts.css" rel="stylesheet">
+  <link href="/css/fonts.css?version=6" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/lib/bootstrap/css/bootstrap.min.css?version=6" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="/lib/animate/animate.min.css" rel="stylesheet">
-  <link href="/lib/venobox/venobox.css" rel="stylesheet">
-  <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/lib/font-awesome/css/font-awesome.min.css?version=6" rel="stylesheet">
+  <link href="/lib/animate/animate.min.css?version=6" rel="stylesheet">
+  <link href="/lib/venobox/venobox.css?version=6" rel="stylesheet">
+  <link href="/lib/owlcarousel/assets/owl.carousel.min.css?version=6" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="/css/app.css" rel="stylesheet">
-  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/app.css?version=6" rel="stylesheet">
+  <link href="/css/style.css?version=6" rel="stylesheet">
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-  <link href="/css/jquery.sweet-modal.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css?version=6" rel="stylesheet">
+  <link href="/css/jquery.sweet-modal.min.css?version=6" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: TheEvent
@@ -145,9 +145,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="/js/jquery.sweet-modal.min.js"></script>
 
-  <script src="/js/newsletter.js?version=5"></script>
-  <script src="/js/registration.js?version=5"></script>
-  <script src="/js/contactus.js?version=5"></script>
+  <script src="/js/newsletter.js?version=6"></script>
+  <script src="/js/registration.js?version=6"></script>
+  <script src="/js/contactus.js?version=6"></script>
   <script>
     var _csrf_token = '{{csrf_token()}}'
   </script>

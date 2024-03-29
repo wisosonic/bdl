@@ -7,6 +7,7 @@
           <table style="width:100%" id="myTable" class="display">
             <thead>
                 <tr>
+                    <th>Date</th>
                     <th>Doctor Name</th>
                     <th>Phone Number</th>
                     <th>Email</th>
@@ -19,6 +20,7 @@
             <tbody>
               @foreach ($all_registrations as $key => $value)
               <tr>
+                  <td>{{$value->created_at}}</td>
                   <td>{{$value->name}}</td>
                   <td>{{$value->phone}}</td>
                   <td>{{$value->email}}</td>

@@ -25,14 +25,22 @@ function register() {
         },
         function(data, status){
             $('#exampleModalToggle2').modal('hide');
+            $("#registration_name").val("")
+            $("#registration_phone").val("")
+            $("#registration_lda_id").val("")
+            $("#registration_email").val("")
+            $('input[name="registration_attending"]').prop('checked', false);
+            $('input[name="registration_location"]').prop('checked', false);
             setTimeout(() => {
-                toastr["success"]("Your are successfuly registered to this event")
-                $("#registration_name").val("")
-                $("#registration_phone").val("")
-                $("#registration_lda_id").val("")
-                $("#registration_email").val("")
-                $('input[name="registration_attending"]').prop('checked', false);
-                $('input[name="registration_location"]').prop('checked', false);
+                if (data.exists) {
+                    toastr["warning"]("Your are already registered !")
+                } else {
+                    if (data.success) {
+                        toastr["success"]("Your are successfuly registered to this event")
+                    } else {
+                        toastr["error"]("Something went wrong. Registration was not completed !")
+                    }
+                }
             }, 500);
 
         });

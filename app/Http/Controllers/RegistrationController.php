@@ -29,19 +29,33 @@ class RegistrationController extends Controller
     public function store(Request $request)
     {
         $all_data = $request->all();
+
+        $lda_id = $all_data["lda_id"];
+        $exist = Registration::where("lda_id", $lda_id)->first();
+        if ($exist) {
+            return response()->json([
+                'exists' => true
+            ]);
+        }
+
+        try {
+            $registration = new Registration;
+            $registration->name = $all_data["name"];
+            $registration->phone = $all_data["phone"];
+            $registration->lda_id = $all_data["lda_id"];
+            $registration->location = $all_data["location"];
+            $registration->email = $all_data["email"];
+            $registration->attending = $all_data["attending"];
+            $registration->save();
+            return response()->json([
+                'success' => true
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false
+            ]);
+        }
         
-        $registration = new Registration;
-        $registration->name = $all_data["name"];
-        $registration->phone = $all_data["phone"];
-        $registration->lda_id = $all_data["lda_id"];
-        $registration->location = $all_data["location"];
-        $registration->email = $all_data["email"];
-        $registration->attending = $all_data["attending"];
-        $registration->save();
- 
-        return response()->json([
-            'email' => $all_data["name"]
-        ]);
 
     }
 

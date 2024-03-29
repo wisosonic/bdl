@@ -35,6 +35,7 @@
                   @else
                     <td>Other</td>
                   @endif
+                  <td></td>
               </tr>
               @endforeach
             </tbody>

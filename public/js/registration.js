@@ -12,7 +12,7 @@ function register() {
         return false
     }
 
-    if (registration_name && registration_phone && registration_lda_id && registration_email && registration_attending) {
+    if (registration_name && registration_phone && registration_lda_id && registration_attending) {
         $.post("/registration",
         {
             _token: _csrf_token,

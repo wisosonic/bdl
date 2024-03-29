@@ -56,3 +56,5 @@
       </div>
     </div>
   </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top" style="display: inline;"><i class="fa fa-angle-up"></i></a>

@@ -1,6 +1,9 @@
 @extends($lang."/admin/base")
 
 @section("content")
+<link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/3.0.1/css/buttons.dataTables.css" rel="stylesheet">
+
 <section id="speakers" class="wow fadeInUp">
     <div class="container">
         <div class="section-header">
@@ -9,7 +12,7 @@
         </div>
 
         <div class="row">
-            <table style="width:100%" id="registrationsTable" class="display">
+            <table id="registrationsTable" class="display">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -56,13 +59,25 @@
     </div>
 </section>
 
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.1/js/dataTables.buttons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.print.min.js"></script>
+
 <script>
     setTimeout(() => {
         document.getElementById("main").scrollIntoView({behavior: 'smooth'});
     }, 100);
 
     let table = new DataTable('#registrationsTable', {
-        // config options...
+        layout: {
+            topStart: {
+                buttons: ['excel']
+            }
+        }
     });
+    $("#registrationsTable_wrapper").css("width", "100%")
+    $("#registrationsTable").css("width", "100%")
 </script>
 @endsection

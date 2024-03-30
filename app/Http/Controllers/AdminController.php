@@ -12,8 +12,51 @@ class AdminController extends GeneralController
     {
         $all_registrations = Registration::all();
 
-        return view($this->language . '/admin/all-registrations', [
+        return view($this->language . '/admin/registrations', [
             'all_registrations' => $all_registrations,
         ]);
+    }
+
+    public function editRegistration(Request $request, $id)
+    {
+        $registration = Registration::find($id);
+        if ($registration) {
+            return view($this->language . '/admin/editRegistration', [
+                'registration' => $registration,
+            ]);
+        } else {
+            return null; 
+        }
+    }
+
+    public function updateRegistration(Request $request, $id)
+    {
+        $all_data = $request->request->all();
+        $registration = Registration::find($id);
+        if ($registration) {
+            $registration->name = $all_data["name"];
+            $registration->phone = $all_data["phone"];
+            $registration->lda_id = $all_data["lda_id"];
+            $registration->location = $all_data["location"];
+            $registration->email = $all_data["email"];
+            $registration->attending = $all_data["attending"];
+            $registration->save();
+            return $registration;
+        } else {
+            return null; 
+        }
+    }
+
+    public function deleteRegistration(Request $request)
+    {
+        $all_data = $request->request->all();
+        $id = $all_data["id"];
+        $registration = Registration::find($id);
+        if ($registration) {
+            $registration->delete();
+            return true;
+        } else {
+            return null; 
+        }
     }
 }

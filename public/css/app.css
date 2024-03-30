@@ -50,6 +50,17 @@ a.register-btn:active {
     height: 250px !important;
 }
 
+.mybutton {
+    border: 1px solid #f82249;
+    color: #f82249;
+    background-color: transparent;
+}
+.mybutton:hover {
+    border: 1px solid #f82249;
+    color: white;
+    background-color: #f82249;
+}
+
 @media (max-width: 767px) {
     #schedule .schedule-item .speaker {
         margin: 0 10px 30% 0 !important;

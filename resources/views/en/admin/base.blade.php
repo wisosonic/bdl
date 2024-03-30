@@ -31,6 +31,25 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
   <link href="/css/jquery.sweet-modal.min.css" rel="stylesheet">
   <link href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Libraries -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/superfish/hoverIntent.js"></script>
+    <script src="/lib/superfish/superfish.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/venobox/venobox.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js" ></script>
+    <script src="/js/jquery.sweet-modal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
 
   <!-- =======================================================
     Theme Name: TheEvent
@@ -59,9 +78,20 @@
     </div>
   </header><!-- #header -->
 
+  <section id="intro" class="section-bg wow fadeInUp">
+      <div class="container">
+        <div class="intro-container wow fadeIn">
+          <h1 class="mb-4 pb-0"><br>Admin Panel</h1>
+          
+        </div>
+      </div>
+    </section>
   
   <main id="main">
-    @include($lang."/admin/table")
+    <!--==========================
+      About Section
+    ============================-->
+    @yield("content")
   </main>
 
 
@@ -75,37 +105,17 @@
 
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-  <!-- JavaScript Libraries -->
-  <script src="/lib/jquery/jquery.min.js"></script>
-  <script src="/lib/jquery/jquery-migrate.min.js"></script>
-  <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/lib/easing/easing.min.js"></script>
-  <script src="/lib/superfish/hoverIntent.js"></script>
-  <script src="/lib/superfish/superfish.min.js"></script>
-  <script src="/lib/wow/wow.min.js"></script>
-  <script src="/lib/venobox/venobox.min.js"></script>
-  <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-  
-
   <!-- Contact Form JavaScript File -->
   <script src="/contactform/contactform.js"></script>
-
+  
   <!-- Template Main Javascript File -->
   <script src="/js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js" ></script>
-  <script src="/js/jquery.sweet-modal.min.js"></script>
 
-  <script src="/js/newsletter.js"></script>
-  <script src="/js/registration.js"></script>
-  <script src="/js/contactus.js"></script>
-  <script>
-    let table = new DataTable('#myTable', {
-        // config options...
-    });
-  </script>
+  <script src="/js/newsletter.js?version=6"></script>
+  <script src="/js/registration.js?version=6"></script>
+  <script src="/js/contactus.js?version=6"></script>
+  <script src="/js/admin.js?version=6"></script>
+
   <script>
     var _csrf_token = '{{csrf_token()}}'
   </script>

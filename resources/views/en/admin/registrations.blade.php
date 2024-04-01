@@ -104,8 +104,9 @@
                 }
             });
         },
+        lengthMenu: [10, 25, 50, { label: 'All', value: -1 }],
         layout: {
-            topStart: {
+            top2Start: {
                 buttons: ['excel']
             }
         }

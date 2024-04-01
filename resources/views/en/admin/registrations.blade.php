@@ -24,8 +24,6 @@
                         <th>Clinic location</th>
                         <th>Actions</th>
                     </tr>
-                </thead>
-                <tbody>
                     <tr>
                         <td class='colsearch'></td>
                         <td class='colsearch'></td>
@@ -36,6 +34,8 @@
                         <td class='colsearch'></td>
                         <td class='colsearch'></td>
                     </tr>
+                </thead>
+                <tbody>
                 @foreach ($all_registrations as $key => $value)
                 <tr>
                     <td>{{$value->created_at}}</td>
@@ -88,11 +88,8 @@
                 let column = this;
                 let col_index = column.index()
                 if (col_index > 0 && col_index < 7) {
-                    let title = column.header().textContent;
-    
                     // Create input element
                     let input = document.createElement('input');
-                    input.placeholder = "";
                     document.getElementsByClassName('colsearch')[col_index].appendChild(input);
     
                     // Event listener for user input

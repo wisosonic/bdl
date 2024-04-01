@@ -26,6 +26,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td class='colsearch'></td>
+                        <td class='colsearch'></td>
+                        <td class='colsearch'></td>
+                        <td class='colsearch'></td>
+                        <td class='colsearch'></td>
+                        <td class='colsearch'></td>
+                        <td class='colsearch'></td>
+                        <td class='colsearch'></td>
+                    </tr>
                 @foreach ($all_registrations as $key => $value)
                 <tr>
                     <td>{{$value->created_at}}</td>
@@ -71,6 +81,29 @@
     }, 100);
 
     let table = new DataTable('#registrationsTable', {
+        initComplete: function () {
+            this.api()
+            .columns()
+            .every(function () {
+                let column = this;
+                let col_index = column.index()
+                if (col_index > 0 && col_index < 7) {
+                    let title = column.header().textContent;
+    
+                    // Create input element
+                    let input = document.createElement('input');
+                    input.placeholder = "";
+                    document.getElementsByClassName('colsearch')[col_index].appendChild(input);
+    
+                    // Event listener for user input
+                    input.addEventListener('keyup', () => {
+                        if (column.search() !== this.value) {
+                            column.search(input.value).draw();
+                        }
+                    });
+                }
+            });
+        },
         layout: {
             topStart: {
                 buttons: ['excel']

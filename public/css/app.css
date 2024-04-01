@@ -61,6 +61,10 @@ a.register-btn:active {
     background-color: #f82249;
 }
 
+.colsearch input{
+    width: 100%;
+}
+
 @media (max-width: 767px) {
     #schedule .schedule-item .speaker {
         margin: 0 10px 30% 0 !important;

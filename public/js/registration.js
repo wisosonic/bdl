@@ -6,10 +6,15 @@ function register() {
     var registration_attending = $('input[name="registration_attending"]:checked').val()
     var registration_location = $('input[name="registration_location"]:checked').val()
 
-    var phone_format = new RegExp('^[0-9]{2}[0-9]{6}$');
+    var phone_format = new RegExp('^(3|70|71|76|78|79|81)|(03|70|71|76|78|79|81)\d{6}$');
+    registration_phone = registration_phone.replaceAll(" ", "")
     if (registration_phone && ! phone_format.test(registration_phone)) {
         toastr["error"]("Please provide a valid phone number !")
         return false
+    } else {
+        if(registration_phone.charAt(0) == "3") {
+            registration_phone = "0" + registration_phone
+        }
     }
 
     if (registration_name && registration_phone && registration_lda_id && registration_attending) {
@@ -52,7 +57,7 @@ function register() {
 
 $( "#registration_phone" ).on( "keypress", function(evt) {
     Code = evt.originalEvent.charCode
-    if (Code > 31 && (Code < 48 || Code > 57))
+    if (Code > 32 && (Code < 48 || Code > 57))
         return false;
     return true;
 } );

@@ -57,7 +57,7 @@
                         <a onclick="editRegistration({{$value->id}}); return false;" href="#" class="mx-2">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </a>
-                        <a onclick="deleteRegistration({{$value->id}}); return false;" href="#">
+                            <a onclick="deleteRegistration({{$value->id}}); return false;" href="#" class="mx-2">
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </td>

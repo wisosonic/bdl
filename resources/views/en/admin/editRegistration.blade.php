@@ -9,6 +9,9 @@
         </div>
 
         <div class="row">
+          <div class="col-md-12" style="text-align: right;">
+            <button onclick="backToTable()" type="button" class="btn btn-primary mybutton">Back</button>
+          </div>
           <div class="col-md-12">
               <input type="hidden" value="{{$registration->id}}" id="registration_id">
               <div class="mb-3">

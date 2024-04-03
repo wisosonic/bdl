@@ -1,3 +1,7 @@
+function backToTable() {
+    window.location.replace("/admin-panel/registrations/")
+}
+
 function editRegistration(id){
     window.location.replace("/admin-panel/registrations/"+id)
 }

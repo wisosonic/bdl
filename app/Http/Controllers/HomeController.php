@@ -8,6 +8,7 @@ use Session;
 use App\Models\Speaker;
 use App\Models\Timeslot;
 use App\Models\Sponsor;
+use App\Models\Registration;
 
 class HomeController extends GeneralController
 {
@@ -26,5 +27,28 @@ class HomeController extends GeneralController
             'gold_sponsors' => $gold_sponsors,
             'regular_sponsors' => $regular_sponsors,
         ]);
+    }
+
+    public function attendance()
+    {
+        return view($this->language . '/attendance');
+    }
+
+    public function postAttendance(Request $request)
+    {
+        $all_data = $request->all();
+        $registration = Registration::where("lda_id", $all_data["lda_id"])->first();
+        if ($registration) {
+            $registration->presence = 1;
+            $registration->save();
+            return response()->json([
+                'confirmed' => true,
+                'registration' => $registration
+            ]);
+        } else {
+            return response()->json([
+                'confirmed' => false
+            ]);
+        }
     }
 }

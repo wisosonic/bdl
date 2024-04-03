@@ -65,6 +65,23 @@ a.register-btn:active {
     width: 100%;
 }
 
+.attendance {
+    color: #fff;
+    background: #f82249;
+    padding: 7px 22px;
+    border-radius: 50px;
+    border: 2px solid #f82249;
+    transition: all ease-in-out 0.3s;
+    font-weight: 500;
+    margin-left: 8px;
+    margin-top: 2px;
+    line-height: 1;
+    font-size: 13px;
+}
+.attendance:hover {
+    background: none !important;
+}
+
 @media (max-width: 767px) {
     #schedule .schedule-item .speaker {
         margin: 0 10px 30% 0 !important;

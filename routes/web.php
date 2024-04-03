@@ -8,7 +8,8 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', [HomeController::class, 'index']);
-
+Route::get('/attendance', [HomeController::class, 'attendance']);
+Route::post('/attendance', [HomeController::class, 'postAttendance']);
 Route::post('/newsletter', [NewsletterController::class, 'store']);
 Route::post('/registration', [RegistrationController::class, 'store']);
 Route::post('/contact-us', [ContactUsController::class, 'sendMessage']);

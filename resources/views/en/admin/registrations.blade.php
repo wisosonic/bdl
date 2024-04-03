@@ -11,6 +11,41 @@
           <!-- <p>Here are some of our speakers</p> -->
         </div>
 
+        <div class="card mb-3">
+            <div class="card-body">
+                <h4 class="card-title"><b>Stats</b></h4>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>Total Registrations</b></h6>
+                        <p class="card-text">
+                            {{$all_registrations->count()}}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>Attending Lunch</b></h6>
+                        <p class="card-text">
+                            Yes: {{$all_registrations->where("attending", 1)->count()}}<br>
+                            No: {{$all_registrations->where("attending", 0)->count()}}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>Clinic Location</b></h6>
+                        <p class="card-text">
+                            Beirut: {{$all_registrations->where("location", 1)->count()}}<br>
+                            Other: {{$all_registrations->where("location", 0)->count()}}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>Present</b></h6>
+                        <p class="card-text">
+                            Yes: {{$all_registrations->where("presence", 1)->count()}}<br>
+                            No: {{$all_registrations->where("presence", 0)->count()}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <table id="registrationsTable" class="display">
                 <thead>

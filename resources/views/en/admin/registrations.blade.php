@@ -104,7 +104,7 @@
         lengthMenu: [10, 25, 50, { label: 'All', value: -1 }],
         layout: {
             top2Start: {
-                buttons: ['excel']
+                buttons: [{ extend: 'excel', text: 'Export to Excel' }]
             }
         }
     });

@@ -14,6 +14,7 @@ function updateRegistration() {
     var registration_email = $("#registration_email").val()
     var registration_attending = $('input[name="registration_attending"]:checked').val()
     var registration_location = $('input[name="registration_location"]:checked').val()
+    var registration_presence = $('input[name="registration_presence"]:checked').val()
 
     $.ajax({
         url: "/admin-panel/registrations/"+registration_id,
@@ -28,6 +29,7 @@ function updateRegistration() {
             location: registration_location,
             email: registration_email,
             attending: registration_attending,
+            presence: registration_presence,
         },
         success: function (data, textStatus, xhr) {
             toastr["success"]("Registration updated successfuly !")

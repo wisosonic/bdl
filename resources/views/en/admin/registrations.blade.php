@@ -57,6 +57,7 @@
                         <th>LDA ID</th>
                         <th>Lunch</th>
                         <th>Clinic location</th>
+                        <th>Presence</th>
                         <th>Actions</th>
                     </tr>
                     <tr>
@@ -68,36 +69,42 @@
                         <td class='colsearch'></td>
                         <td class='colsearch'></td>
                         <td class='colsearch'></td>
+                        <td class='colsearch'></td>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($all_registrations as $key => $value)
-                <tr>
-                    <td>{{$value->created_at}}</td>
-                    <td>{{$value->name}}</td>
-                    <td>{{$value->phone}}</td>
-                    <td>{{$value->email}}</td>
-                    <td>{{$value->lda_id}}</td>
-                    @if ($value->attending)
-                        <td>Yes</td>
-                    @else
-                        <td>No</td>
-                    @endif
-                    @if ($value->location)
-                        <td>Beirut</td>
-                    @else
-                        <td>Other</td>
-                    @endif
-                    <td>
-                        <a onclick="editRegistration({{$value->id}}); return false;" href="#" class="mx-2">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                        </a>
+                    @foreach ($all_registrations as $key => $value)
+                    <tr>
+                        <td>{{$value->created_at}}</td>
+                        <td>{{$value->name}}</td>
+                        <td>{{$value->phone}}</td>
+                        <td>{{$value->email}}</td>
+                        <td>{{$value->lda_id}}</td>
+                        @if ($value->attending)
+                            <td>Yes</td>
+                        @else
+                            <td>No</td>
+                        @endif
+                        @if ($value->location)
+                            <td>Beirut</td>
+                        @else
+                            <td>Other</td>
+                        @endif
+                        @if ($value->presence)
+                            <td>Yes</td>
+                        @else
+                            <td>No</td>
+                        @endif
+                        <td>
+                            <a onclick="editRegistration({{$value->id}}); return false;" href="#" class="mx-2">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                            </a>
                             <a onclick="deleteRegistration({{$value->id}}); return false;" href="#" class="mx-2">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-                @endforeach
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

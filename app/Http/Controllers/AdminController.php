@@ -40,6 +40,7 @@ class AdminController extends GeneralController
             $registration->location = $all_data["location"];
             $registration->email = $all_data["email"];
             $registration->attending = $all_data["attending"];
+            $registration->presence = $all_data["presence"];
             $registration->save();
             return $registration;
         } else {

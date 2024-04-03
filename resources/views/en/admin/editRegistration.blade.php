@@ -79,6 +79,28 @@
                     </div>
                   @endif
               </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput6" class="form-label">Presence *</label>
+                  @if ($registration->presence)
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="registration_presence" id="registration_presence_yes" value="1" checked>
+                      <label class="form-check-label" for="registration_presence_yes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="registration_presence" id="registration_presence_no" value="0">
+                      <label class="form-check-label" for="registration_presence_no">No</label>
+                    </div>
+                  @else
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="registration_presence" id="registration_presence_yes" value="1">
+                      <label class="form-check-label" for="registration_presence_yes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="registration_presence" id="registration_presence_no" value="0" checked>
+                      <label class="form-check-label" for="registration_presence_no">No</label>
+                    </div>
+                  @endif
+              </div>
           </div>
           <div class="col-md-12">
           <button onclick="updateRegistration()" type="button" class="btn btn-primary mybutton">Save</button>

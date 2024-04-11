@@ -28,14 +28,45 @@
                   </div>
               </div>
               <div class="mb-3">
-                  <label for="registration_lda_id" class="form-label">LDA ID *</label>
-                  <input type="text" class="form-control" placeholder="Your LDA ID" id="registration_lda_id" value="{{$registration->lda_id}}">
-              </div>
-              <div class="mb-3">
                   <label for="registration_email" class="form-label">Email address</label>
                   <input type="email" class="form-control" placeholder="name@example.com" id="registration_email" value="{{$registration->email}}">
               </div>
               <div class="mb-3">
+                @if ($registration->doctor)
+                  <label for="exampleFormControlInput6" class="form-label">Are you Doctor or Student ? *</label>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="registration_doctor" id="registration_attending_doctor" value="1" checked>
+                      <label class="form-check-label" for="registration_attending_doctor">Doctor</label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="registration_doctor" id="registration_attending_student" value="0">
+                      <label class="form-check-label" for="registration_attending_student">Student</label>
+                  </div>
+                @else
+                <label for="exampleFormControlInput6" class="form-label">Are you Doctor or Student ? *</label>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="registration_doctor" id="registration_attending_doctor" value="1">
+                      <label class="form-check-label" for="registration_attending_doctor">Doctor</label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="registration_doctor" id="registration_attending_student" value="0" checked>
+                      <label class="form-check-label" for="registration_attending_student">Student</label>
+                  </div>
+                @endif
+              </div>
+              @if (! $registration->doctor)
+                <div class="mb-3 lda_id_div d-none">
+              @else 
+                <div class="mb-3 lda_id_div">
+              @endif
+                  <label for="registration_lda_id" class="form-label">LDA ID *</label>
+                  <input type="text" class="form-control" placeholder="Your LDA ID" id="registration_lda_id" value="{{$registration->lda_id}}">
+              </div>
+              @if (! $registration->doctor)
+                <div class="mb-3 clinic_location_div d-none">
+              @else 
+                <div class="mb-3 clinic_location_div">
+              @endif
                   <label for="exampleFormControlInput5" class="form-label">Clinic Location ? *</label>
                   @if ($registration->location)
                     <div class="form-check">

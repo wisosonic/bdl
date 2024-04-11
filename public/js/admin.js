@@ -15,6 +15,7 @@ function updateRegistration() {
     var registration_attending = $('input[name="registration_attending"]:checked').val()
     var registration_location = $('input[name="registration_location"]:checked').val()
     var registration_presence = $('input[name="registration_presence"]:checked').val()
+    var registration_doctor = $('input[name="registration_doctor"]:checked').val()
 
     $.ajax({
         url: "/admin-panel/registrations/"+registration_id,
@@ -26,16 +27,22 @@ function updateRegistration() {
             name: registration_name,
             phone: registration_phone,
             lda_id: registration_lda_id,
-            location: registration_location,
+            location: registration_location ? registration_location : '',
             email: registration_email,
             attending: registration_attending,
             presence: registration_presence,
+            doctor: registration_doctor,
         },
         success: function (data, textStatus, xhr) {
             toastr["success"]("Registration updated successfuly !")
         },
         error: function (xhr, textStatus, errorThrown) {
-            toastr["error"]("Error ! Registration not updated !")
+            data = xhr.responseJSON
+            if (data.errors && data.errors.lda_id) {
+                toastr["warning"]("Your are already registered !")
+            } else {
+                toastr["error"]("Error ! Registration not updated !")
+            }
         }
     });
 }
@@ -72,3 +79,18 @@ function deleteRegistration(id) {
         }
       });
 }
+
+$( document ).ready(function() {
+    $( "input[name='registration_doctor']" ).on( "change", function() {
+        var registration_doctor = $('input[name="registration_doctor"]:checked').val()
+        $(".lda_id_div input").val("")
+        $(".clinic_location_div input").prop('checked', false)
+        if (registration_doctor == "1") {
+            $(".lda_id_div").removeClass( "d-none" )
+            $(".clinic_location_div").removeClass( "d-none" )
+        } else {
+            $(".lda_id_div").addClass( "d-none" )
+            $(".clinic_location_div").addClass( "d-none" )
+        }
+    } );
+});

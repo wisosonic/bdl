@@ -43,16 +43,28 @@
             <input id="registration_phone" type="text" class="form-control" placeholder="Your Phone" aria-label="Your Phone" aria-describedby="basic-addon1">
           </div>
         </div>
-        
-        <div class="mb-3">
-            <label for="registration_lda_id" class="form-label">LDA ID *</label>
-            <input type="text" class="form-control" placeholder="Your LDA ID" id="registration_lda_id">
-        </div>
         <div class="mb-3">
             <label for="registration_email" class="form-label">Email address</label>
             <input type="email" class="form-control" placeholder="name@example.com" id="registration_email">
         </div>
+        
         <div class="mb-3">
+            <label for="exampleFormControlInput6" class="form-label">Are you Doctor or Student ? *</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="registration_doctor" id="registration_attending_doctor" value="1">
+                <label class="form-check-label" for="registration_attending_doctor">Doctor</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="registration_doctor" id="registration_attending_student" value="0">
+                <label class="form-check-label" for="registration_attending_student">Student</label>
+            </div>
+        </div>
+        
+        <div class="mb-3 lda_id_div d-none">
+            <label for="registration_lda_id" class="form-label">LDA ID *</label>
+            <input type="text" class="form-control" placeholder="Your LDA ID" id="registration_lda_id">
+        </div>
+        <div class="mb-3 clinic_location_div d-none">
             <label for="exampleFormControlInput5" class="form-label">Clinic Location ? *</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="registration_location" id="registration_location_beirut" value="1">

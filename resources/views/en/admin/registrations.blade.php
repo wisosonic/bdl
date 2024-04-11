@@ -15,27 +15,35 @@
             <div class="card-body">
                 <h4 class="card-title"><b>Stats</b></h4>
                 <div class="row">
-                    <div class="col-md-3">
-                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>Total Registrations</b></h6>
+                    <div class="col-md-4">
+                        <h4 class="card-subtitle mb-2 text-body-secondary"><b>Total Registrations</b></h4>
                         <p class="card-text">
                             {{$all_registrations->count()}}
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <h6 class="card-subtitle mb-2 text-body-secondary"><b>Attending Lunch</b></h6>
                         <p class="card-text">
                             Yes: {{$all_registrations->where("attending", 1)->count()}}<br>
                             No: {{$all_registrations->where("attending", 0)->count()}}
                         </p>
                     </div>
-                    <div class="col-md-3">
-                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>Clinic Location</b></h6>
+                    <div class="col-md-2">
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>Doctor / Student</b></h6>
                         <p class="card-text">
-                            Beirut: {{$all_registrations->where("location", 1)->count()}}<br>
-                            Other: {{$all_registrations->where("location", 0)->count()}}
+                            Doctors: {{$all_registrations->where("doctor", 1)->count()}}<br>
+                            Students: {{$all_registrations->where("doctor", 0)->count()}}
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>Clinic Location</b></h6>
+                        <p class="card-text">
+                            Beirut: {{$all_registrations->where("location", "1")->count()}}<br>
+                            Other: {{$all_registrations->where("location", "0")->count()}}<br>
+                            No Clinic: {{$all_registrations->where("location", null)->count()}}
+                        </p>
+                    </div>
+                    <div class="col-md-2">
                         <h6 class="card-subtitle mb-2 text-body-secondary"><b>Present</b></h6>
                         <p class="card-text">
                             Yes: {{$all_registrations->where("presence", 1)->count()}}<br>
@@ -54,13 +62,15 @@
                         <th>Doctor Name</th>
                         <th>Phone Number</th>
                         <th>Email</th>
+                        <th>Dr/Stud</th>
                         <th>LDA ID</th>
-                        <th>Lunch</th>
                         <th>Clinic location</th>
+                        <th>Lunch</th>
                         <th>Presence</th>
                         <th>Actions</th>
                     </tr>
                     <tr>
+                        <td class='colsearch'></td>
                         <td class='colsearch'></td>
                         <td class='colsearch'></td>
                         <td class='colsearch'></td>
@@ -79,16 +89,21 @@
                         <td>{{$value->name}}</td>
                         <td>{{$value->phone}}</td>
                         <td>{{$value->email}}</td>
-                        <td>{{$value->lda_id}}</td>
-                        @if ($value->attending)
-                            <td>Yes</td>
+                        @if ($value->doctor)
+                            <td>Dr</td>
                         @else
-                            <td>No</td>
+                            <td>Stud</td>
                         @endif
+                        <td>{{$value->lda_id}}</td>
                         @if ($value->location)
                             <td>Beirut</td>
                         @else
                             <td>Other</td>
+                        @endif
+                        @if ($value->attending)
+                            <td>Yes</td>
+                        @else
+                            <td>No</td>
                         @endif
                         @if ($value->presence)
                             <td>Yes</td>
@@ -129,7 +144,7 @@
             .every(function () {
                 let column = this;
                 let col_index = column.index()
-                if (col_index > 0 && col_index < 7) {
+                if (col_index > 0 && col_index < 9) {
                     // Create input element
                     let input = document.createElement('input');
                     document.getElementsByClassName('colsearch')[col_index].appendChild(input);

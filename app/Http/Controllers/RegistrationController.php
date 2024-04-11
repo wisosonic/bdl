@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
 {
@@ -30,13 +31,9 @@ class RegistrationController extends Controller
     {
         $all_data = $request->all();
 
-        $lda_id = $all_data["lda_id"];
-        $exist = Registration::where("lda_id", $lda_id)->first();
-        if ($exist) {
-            return response()->json([
-                'exists' => true
-            ]);
-        }
+        $v = $request->validate([
+            'lda_id' => $request->lda_id != null ? 'unique:registrations': '',
+        ]);
 
         try {
             $registration = new Registration;
@@ -46,16 +43,17 @@ class RegistrationController extends Controller
             $registration->location = $all_data["location"];
             $registration->email = $all_data["email"];
             $registration->attending = $all_data["attending"];
+            $registration->doctor = $all_data["doctor"];
             $registration->save();
             return response()->json([
                 'success' => true
             ]);
         } catch (\Throwable $th) {
             return response()->json([
-                'success' => false
+                'success' => false,
+                'error' => $th
             ]);
         }
-        
 
     }
 

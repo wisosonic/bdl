@@ -57,7 +57,7 @@ function register() {
             }, 500);
         }).fail(function(data, status, errors) {
             data = data.responseJSON
-            if (data.errors && data.errors.lda_id) {
+            if (data.errors && ( data.errors.lda_id || data.errors.phone) ) {
                 toastr["warning"]("Your are already registered !")
             }
         });

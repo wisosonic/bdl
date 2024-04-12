@@ -33,6 +33,7 @@ class RegistrationController extends Controller
 
         $v = $request->validate([
             'lda_id' => $request->lda_id != null ? 'unique:registrations': '',
+            'phone' => $request->lda_id == null ? 'unique:registrations': '',
         ]);
 
         try {

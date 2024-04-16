@@ -76,13 +76,14 @@
             </div>
         </div>
         <div class="mb-3">
+            <span class="text-warning"> Sorry! All the places are reserved for the lunch </span><br>
             <label for="exampleFormControlInput6" class="form-label">Are you interested in attending the lunch break ? *</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="registration_attending" id="registration_attending_yes" value="1">
+                <input disabled class="form-check-input" type="radio" name="registration_attending" id="registration_attending_yes" value="1">
                 <label class="form-check-label" for="registration_attending_yes">Yes</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="registration_attending" id="registration_attending_no" value="0">
+                <input checked disabled class="form-check-input" type="radio" name="registration_attending" id="registration_attending_no" value="0">
                 <label class="form-check-label" for="registration_attending_no">No</label>
             </div>
         </div>

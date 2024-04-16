@@ -32,11 +32,11 @@ class AdminController extends GeneralController
     public function updateRegistration(Request $request, $id)
     {
         $all_data = $request->request->all();
-        $v = $request->validate([
-            'lda_id' => 'sometimes|unique:registrations',
-        ]);
         $registration = Registration::find($id);
         if ($registration) {
+            $v = $request->validate([
+                'lda_id' => 'sometimes|unique:registrations,lda_id,' . $id,
+            ]);
             $registration->name = $all_data["name"];
             $registration->phone = $all_data["phone"];
             $registration->lda_id = $all_data["lda_id"];

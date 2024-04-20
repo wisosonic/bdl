@@ -111,7 +111,7 @@
                             <td>No</td>
                         @endif
                         <td>
-                            <a onclick="editRegistration({{$value->id}}); return false;" href="#" class="mx-2">
+                            <a href="/admin-panel/registrations/{{$value->id}}" target=”_blank” class="mx-2">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </a>
                             <a onclick="deleteRegistration({{$value->id}}); return false;" href="#" class="mx-2">

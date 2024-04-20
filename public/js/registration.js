@@ -3,7 +3,7 @@ function register() {
     var registration_phone = $("#registration_phone").val()
     var registration_lda_id = $("#registration_lda_id").val()
     var registration_email = $("#registration_email").val()
-    var registration_attending = $('input[name="registration_attending"]:checked').val() 
+    var registration_attending = $('input[name="new_registration_attending"]:checked').val() 
     var registration_location = $('input[name="registration_location"]:checked').val()
     var registration_doctor = $('input[name="registration_doctor"]:checked').val()
 

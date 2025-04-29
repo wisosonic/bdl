@@ -13,16 +13,18 @@ return new class extends Migration
     {
         Schema::create('event_timeslot', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')
-                ->nullable()
-                ->constrained(table: 'events')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('timeslot_id')
-                ->nullable()
-                ->constrained(table: 'timeslots')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->integer('event_id');
+            // $table->foreignId('event_id')
+            //     ->nullable()
+            //     ->constrained(table: 'events')
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
+            $table->integer('timeslot_id');
+            // $table->foreignId('timeslot_id')
+            //     ->nullable()
+            //     ->constrained(table: 'timeslots')
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
             $table->timestamps();
         });
     }

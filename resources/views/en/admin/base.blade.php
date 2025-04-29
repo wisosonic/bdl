@@ -27,7 +27,7 @@
   <!-- Main Stylesheet File -->
   <link href="/css/app.css" rel="stylesheet">
   <link href="/css/style.css" rel="stylesheet">
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
   <link href="/css/jquery.sweet-modal.min.css" rel="stylesheet">
   <link href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css" rel="stylesheet">
@@ -61,6 +61,24 @@
 
 <body>
 
+<style>
+  #intro {
+    background: url(/img/site/backgrounds/{{$event->cover}}) top center;
+    background-size: contain;
+    --background-color: #000910;
+    height: 60vh;
+  }
+  #intro:before {
+    content: "";
+    background: color-mix(in srgb, #000910, transparent 30%);
+    position: absolute;
+    inset: 0;
+  }
+  #intro .intro-container {
+    top:0px;
+  }
+</style>
+
   <!--==========================
     Header
   ============================-->
@@ -78,19 +96,23 @@
     </div>
   </header><!-- #header -->
 
-  <section id="intro" class="section-bg wow fadeInUp">
-      <div class="container">
-        <div class="intro-container wow fadeIn">
-          <h1 class="mb-4 pb-0"><br>Admin Panel</h1>
-          
-        </div>
+  <section id="intro" class="section-bg ">
+    <div class="container">
+
+      
+
+      <div class="intro-container">
+        <h1 class="mb-4 pb-0"><br>Admin Panel</h1>
+        
       </div>
-    </section>
+    </div>
+  </section>
   
   <main id="main">
     <!--==========================
       About Section
     ============================-->
+    @include($lang."/admin/sidebar")
     @yield("content")
   </main>
 
@@ -99,9 +121,9 @@
   <!--==========================
     Footer
   ============================-->
-  @include($lang."/sections/footer")
+  @include($lang."/events/sections/footer")
 
-  @include($lang."/sections/registration")
+  @include($lang."/events/sections/registration")
 
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 

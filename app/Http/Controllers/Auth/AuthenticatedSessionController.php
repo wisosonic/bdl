@@ -9,14 +9,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class AuthenticatedSessionController extends Controller
+use App\Http\Controllers\GeneralController;
+
+class AuthenticatedSessionController extends GeneralController
 {
     /**
      * Display the login view.
      */
     public function create(): View
     {
-        return view('auth.login');
+        // return view('auth.login');
+        return view('auth.new_login');
     }
 
     /**
@@ -28,7 +31,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('home', absolute: false));
     }
 
     /**

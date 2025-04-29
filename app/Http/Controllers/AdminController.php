@@ -4,24 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Event;
 use App\Models\Registration;
 
 class AdminController extends GeneralController
 {
-    public function index()
+    public function index(Request $request, $event_id)
     {
-        $all_registrations = Registration::all();
+        $event = Event::find($event_id);
+        $all_registrations = $event->registrations()->get();
 
-        return view($this->language . '/admin/registrations', [
+        return view($this->language . '/admin/pages/registrations', [
+            'event' => $event,
             'all_registrations' => $all_registrations,
         ]);
     }
 
-    public function editRegistration(Request $request, $id)
+    public function editRegistration(Request $request, $event_id, $registration_id)
     {
-        $registration = Registration::find($id);
+        $event = Event::find($event_id);
+        $registration = Registration::find($registration_id);
         if ($registration) {
-            return view($this->language . '/admin/editRegistration', [
+            return view($this->language . '/admin/pages/editRegistration', [
+                'event' => $event,
                 'registration' => $registration,
             ]);
         } else {
@@ -29,13 +34,13 @@ class AdminController extends GeneralController
         }
     }
 
-    public function updateRegistration(Request $request, $id)
+    public function updateRegistration(Request $request, $event_id, $registration_id)
     {
         $all_data = $request->request->all();
-        $registration = Registration::find($id);
+        $registration = Registration::find($registration_id);
         if ($registration) {
             $v = $request->validate([
-                'lda_id' => 'sometimes|unique:registrations,lda_id,' . $id,
+                'lda_id' => 'sometimes|unique:registrations,lda_id,' . $registration_id,
             ]);
             $registration->name = $all_data["name"];
             $registration->phone = $all_data["phone"];
@@ -52,7 +57,7 @@ class AdminController extends GeneralController
         }
     }
 
-    public function deleteRegistration(Request $request)
+    public function deleteRegistration(Request $request, $event_id)
     {
         $all_data = $request->request->all();
         $id = $all_data["id"];
@@ -62,6 +67,32 @@ class AdminController extends GeneralController
             return true;
         } else {
             return null; 
+        }
+    }
+
+    public function attendance(Request $request, $event_id)
+    {
+        $event = Event::find($event_id);
+        return view($this->language . '/admin/pages/attendance', ["event"=>$event]);
+    }
+
+    public function postAttendance(Request $request, $event_id)
+    {
+        $event = Event::find($event_id);
+
+        $all_data = $request->all();
+        $registration = $event->registrations()->where("lda_id", $all_data["lda_id"])->first();
+        if ($registration) {
+            $registration->presence = 1;
+            $registration->save();
+            return response()->json([
+                'confirmed' => true,
+                'registration' => $registration
+            ]);
+        } else {
+            return response()->json([
+                'confirmed' => false
+            ]);
         }
     }
 }

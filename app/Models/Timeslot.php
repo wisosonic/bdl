@@ -3,21 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\hasOne;
 use Illuminate\Database\Eloquent\Model;
 
 class Timeslot extends Model
 {
     use HasFactory;
 
-    public function lecture(): BelongsTo
+    protected $fillable = [
+        'title',
+        'quote',
+        'start',
+        'end',
+        'day',
+        'type',
+        'event_id'
+    ];
+
+    public function lecture(): hasOne
     {
-        return $this->belongsTo(Lecture::class);
+        return $this->hasOne(Lecture::class);
     }
 
-    public function events(): BelongsToMany
-    {
-        return $this->BelongsToMany(Event::class);
-    }
+    // public function event(): BelongsTo
+    // {
+    //     return $this->BelongsTo(Event::class);
+    // }
 }

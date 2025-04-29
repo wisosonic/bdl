@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Registration extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'phone',
+        'lda_id',
+        'location',
+        'email',
+        'attending',
+        'presence',
+        'doctor',
+        'event_id'
+    ];
 }

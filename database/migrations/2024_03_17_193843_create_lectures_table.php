@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('lectures', function (Blueprint $table) {
             $table->id();
             $table->text("title")->nullable();
-            $table->foreignId('speaker_id')
-                ->nullable()
-                ->constrained(table: 'speakers')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->integer('speaker_id');
+            // $table->foreignId('speaker_id')
+            //     ->nullable()
+            //     ->constrained(table: 'speakers')
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
             $table->timestamps();
         });
     }

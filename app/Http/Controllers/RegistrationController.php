@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
 use App\Models\Registration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -31,10 +32,21 @@ class RegistrationController extends Controller
     {
         $all_data = $request->all();
 
-        $v = $request->validate([
-            'lda_id' => $request->lda_id != null ? 'unique:registrations': '',
-            'phone' => $request->lda_id == null ? 'unique:registrations': '',
-        ]);
+        $condition1 = Registration::where("lda_id", $all_data["lda_id"])->where("event_id", $all_data["event_id"])->get() ;
+        $condition2 = Registration::where("phone", $all_data["phone"])->where("event_id", $all_data["event_id"])->get() ;
+
+        if ($all_data["lda_id"] != "" && $condition1->count() > 0) {
+            return response()->json([
+                'success' => false,
+                'error' => "You are already registered for this event"
+            ]);
+        }
+        if ($all_data["phone"] != "" && $condition2->count() > 0) {
+            return response()->json([
+                'success' => false,
+                'error' => "You are already registered for this event"
+            ]);
+        }
 
         try {
             $registration = new Registration;
@@ -43,8 +55,9 @@ class RegistrationController extends Controller
             $registration->lda_id = $all_data["lda_id"];
             $registration->location = $all_data["location"];
             $registration->email = $all_data["email"];
-            $registration->attending = 0;
+            $registration->attending = $all_data["attending"];
             $registration->doctor = $all_data["doctor"];
+            $registration->event_id = $all_data["event_id"];
             $registration->save();
             return response()->json([
                 'success' => true

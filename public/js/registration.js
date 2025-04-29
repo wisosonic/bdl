@@ -1,4 +1,5 @@
 function register() {
+    var event_id = $("#event_id").val()
     var registration_name = $("#registration_name").val()
     var registration_phone = $("#registration_phone").val()
     var registration_lda_id = $("#registration_lda_id").val()
@@ -28,6 +29,7 @@ function register() {
         $.post("/registration",
         {
             _token: _csrf_token,
+            event_id: event_id,
             name: registration_name,
             phone: registration_phone,
             lda_id: registration_lda_id,
@@ -41,18 +43,14 @@ function register() {
             $("#registration_phone").val("")
             $("#registration_lda_id").val("")
             $("#registration_email").val("")
-            $('input[name="registration_attending"]').prop('checked', false);
+            $('input[name="new_registration_attending"]').prop('checked', false);
             $('input[name="registration_location"]').prop('checked', false);
             $('input[name="registration_doctor"]').prop('checked', false);
             setTimeout(() => {
-                if (data.errors && data.errors.exists) {
-                    toastr["warning"]("Your are already registered !")
-                } else {
-                    if (data.success) {
-                        toastr["success"]("Your are successfuly registered to this event")
-                    } else {
-                        toastr["error"]("Something went wrong. Registration was not completed !")
-                    }
+                if (data.error) {
+                    toastr["error"](data.error + ". Registration was not completed !")
+                } else if (data.success) {
+                    toastr["success"]("Your are successfuly registered to this event")
                 }
             }, 500);
         }).fail(function(data, status, errors) {

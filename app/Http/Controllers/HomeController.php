@@ -5,50 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 
-use App\Models\Speaker;
-use App\Models\Timeslot;
-use App\Models\Sponsor;
+use App\Models\Team;
+use App\Models\Member;
 use App\Models\Registration;
 
 class HomeController extends GeneralController
 {
-    
-    public function index() {
-        $all_speakers = Speaker::all();
-        $all_timeslots = Timeslot::all()->groupBy("day");
-        $platinum_sponsors = Sponsor::where("platinum", 1)->get();
-        $gold_sponsors = Sponsor::where("platinum", 2)->get();
-        $regular_sponsors = Sponsor::where("platinum", ">", 2)->get()->sortBy("platinum");
+    public function index()
+    {
+        $all_team = Team::all();
+        $all_members_count = Member::count();
+        $all_registrations_count = Registration::count();
 
-        return view($this->language . '/base', [
-            'all_speakers' => $all_speakers,
-            'all_timeslots' => $all_timeslots,
-            'platinum_sponsors' => $platinum_sponsors,
-            'gold_sponsors' => $gold_sponsors,
-            'regular_sponsors' => $regular_sponsors,
+        return view($this->language . '/pages/home', [
+            'team' => $all_team, 
+            'members_count' => $all_members_count,
+            'registrations_count' => $all_registrations_count,
         ]);
     }
 
-    public function attendance()
+    public function members()
     {
-        return view($this->language . '/attendance');
-    }
+        $all_members = Member::all();
 
-    public function postAttendance(Request $request)
-    {
-        $all_data = $request->all();
-        $registration = Registration::where("lda_id", $all_data["lda_id"])->first();
-        if ($registration) {
-            $registration->presence = 1;
-            $registration->save();
-            return response()->json([
-                'confirmed' => true,
-                'registration' => $registration
-            ]);
-        } else {
-            return response()->json([
-                'confirmed' => false
-            ]);
-        }
+        return view($this->language . '/pages/members', [
+            'members' => $all_members
+        ]);
     }
 }

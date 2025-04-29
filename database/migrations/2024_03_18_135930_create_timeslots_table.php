@@ -19,11 +19,12 @@ return new class extends Migration
             $table->string("end");
             $table->string("day");
             $table->string("type");
-            $table->foreignId('lecture_id')
-                ->nullable()
-                ->constrained(table: 'lectures')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->integer('lecture_id');
+            // $table->foreignId('lecture_id')
+            //     ->nullable()
+            //     ->constrained(table: 'lectures')
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
             $table->timestamps();
         });
     }

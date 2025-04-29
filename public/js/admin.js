@@ -1,12 +1,12 @@
-function backToTable() {
-    window.location.replace("/admin-panel/registrations/")
+function backToTable(event_id) {
+    window.location.replace("/admin-panel/registrations/"+event_id)
 }
 
-function editRegistration(id){
-    window.location.replace("/admin-panel/registrations/"+id)
+function editRegistration(event_id, registration_id){
+    window.location.replace("/admin-panel/registrations/"+event_id+"/"+registration_id)
 }
 
-function updateRegistration() {
+function updateRegistration(event_id) {
     var registration_id = $("#registration_id").val()
     var registration_name = $("#registration_name").val()
     var registration_phone = $("#registration_phone").val()
@@ -18,7 +18,7 @@ function updateRegistration() {
     var registration_doctor = $('input[name="registration_doctor"]:checked').val()
 
     $.ajax({
-        url: "/admin-panel/registrations/"+registration_id,
+        url: "/admin-panel/registrations/"+event_id+"/"+registration_id,
         type: 'PUT',
         dataType: 'json',
         data: {
@@ -47,7 +47,7 @@ function updateRegistration() {
     });
 }
 
-function deleteRegistration(id) {
+function deleteRegistration(event_id, registration_id) {
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -59,12 +59,12 @@ function deleteRegistration(id) {
       }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: "/admin-panel/registrations/delete",
+                url: "/admin-panel/registrations/"+event_id+"/delete",
                 type: 'delete',
                 dataType: 'json',
                 data: {
                     _token: _csrf_token,
-                    id: id
+                    id: registration_id
                 },
                 success: function (data, textStatus, xhr) {
                     toastr["success"]("Registration deleted successfuly !")

@@ -12,14 +12,16 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
+use App\Http\Controllers\GeneralController;
+
+class RegisteredUserController extends GeneralController
 {
     /**
      * Display the registration view.
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('auth.new_register');
     }
 
     /**

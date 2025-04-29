@@ -10,6 +10,14 @@ class Speaker extends Model
 {
     use HasFactory;
 
+    protected $table = "speakers";
+    protected $fillable = [
+        'professor',
+        'name',
+        'speciality',
+        'photo'
+    ];
+
     public function lectures(): HasMany
     {
         return $this->hasMany(Lecture::class);

@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Session;
 
+use App\Models\Event;
+
 class GeneralController extends Controller
 {
     public $language;
@@ -16,6 +18,8 @@ class GeneralController extends Controller
       "en" => "English",
       "ar" => "عربي"
     );
+
+    public $all_events;
 
     public function __construct(Request $request) {
         if ($request->has('lang')) {
@@ -29,8 +33,12 @@ class GeneralController extends Controller
         foreach ($this->alt_languages as $key => $l) {
             array_push($this->alt_languages_tr, $this->all_languages_tr[$l]);
         }
+
+        $this->all_events = Event::all();
+
         View::share('lang', $this->language);
         View::share('alt_lang', $this->alt_languages);
         View::share('alt_lang_tr', $this->alt_languages_tr);
+        View::share('events', $this->all_events);
     }
 }

@@ -44,7 +44,26 @@
                   <div class="speaker">
                     <img src="{{asset('storage/' . $timeslot->lecture()->first()->speaker()->first()->photo)}}" alt="Brenden Legros">
                   </div>
-                  <h4>{{$timeslot->lecture()->first()->speaker()->first()->name}} <span style="font-size:14px">{{$timeslot->lecture()->first()->speaker()->first()->speciality}}</span></h4>
+                  <h4>
+                    @switch($timeslot->lecture()->first()->speaker()->first()->professor)
+                      @case(0)
+                          Mr.
+                          @break
+                      @case(1)
+                          Mr.
+                          @break
+                      @case(2)
+                          Dr.
+                          @break
+                      @case(3)
+                          Asst. Pr.
+                          @break
+                      @case(4)
+                          Pr.
+                          @break
+                    @endswitch
+                    {{$timeslot->lecture()->first()->speaker()->first()->name}} <span style="font-size:14px">{{$timeslot->lecture()->first()->speaker()->first()->speciality}}</span>
+                  </h4>
                   <p><b>{{$timeslot->lecture()->first()->title}}</b></p>
                 </div>
               </div>

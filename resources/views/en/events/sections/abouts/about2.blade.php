@@ -22,7 +22,7 @@
           <div class="col-lg-6">
             <h2>About The Event</h2>
             <p>
-                <b>In collaboration with Faculty of Dentistry - BAU</b>
+                <b>Under the patronage of Pr. Wael Nabil Abdel Salam, President of BAU</b>
             </p>
             <p>
               For more info : <br>
@@ -34,13 +34,13 @@
           </div>
           <div class="col-lg-3">
             <h3>Where</h3>
-            <p>Beirut Arab University <br> Omar Farroukh Hall</p>
+            <p>Beirut Arab University <br> Hariri Building - Jamil Rawas Hall</p>
             <p><a data-bs-toggle="modal" data-bs-target="#locationMap" href="#">See on map</a></p>
           </div>
           <div class="col-lg-3">
             <h3>When</h3>
             <p>Sunday May 25, 2025</p>
-            <p>8:00 AM - 02:00 PM</p>
+            <p>8:00 AM - 02:15 PM</p>
           </div>
         </div>
     </div>
@@ -56,13 +56,12 @@
               <div class="col-lg-8">
                 <div class="venue-gallery">
                   <img src="/img/venue-gallery/campus.jpg" alt="" class="img-fluid">
-                  <div class="shape"></div>
                 </div>
               </div>
               <div class="col-lg-4">
                   1- North Gate<br>
                   2- Main Building: Jamal Abdul Nasser Hall / Faculty of Dentistry / Admission & Registration / Graduate Studies / Services / Clinic / Outdoor Cafeteria / Gymnasium<br>
-                  <b>3- Omar Faroukh Hall</b><br>
+                  3- Omar Faroukh Hall<br>
                   4- Outdoor Cafeteria<br>
                   5- Al Multaqa<br>
                   6- West Gate<br>
@@ -70,8 +69,8 @@
                   8- Indoor Sports<br>
                   9- Football Field<br>
                   10- South Gate<br>
-                  11- Hariri Entrance<br>
-                  12- Hariri Building<br>
+                  <b>11- Hariri Entrance</b><br>
+                  <b>12- Hariri Building</b><br>
                   13- Cafeteria<br>
                   14- BAU Medical Center Outpatient Clinics<br>
                   15- South Gate<br>

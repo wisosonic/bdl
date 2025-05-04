@@ -20,10 +20,10 @@
                 <li><a href="/#about">BDL</a></li>
                 <li><a href="/#team">Team</a></li>
                 <li><a href="/members">Members</a></li>
-                <li><a href="/#clients">Sponsors</a></li>
+                <!-- <li><a href="/#clients">Sponsors</a></li> -->
             </ul>
           </li>
-          <li><a href="/#services">Services</a></li>
+          <!-- <li><a href="/#services">Services</a></li> -->
           <li class="dropdown"><a href="#"><span>Events</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <!-- <li><a href="#">Dropdown 1</a></li> -->
@@ -47,7 +47,7 @@
               <li><a href="/lda/new-clinic-standards">New Clinic Standards</a></li>
             </ul>
           </li>
-          <li><a href="/#portfolio">Portfolio</a></li>
+          <!-- <li><a href="/#portfolio">Portfolio</a></li> -->
           <li><a href="/#contact">Contact</a></li>
           @if(Auth::user())
           <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -58,7 +58,7 @@
             </ul>
           </li>
           @else
-          <li><a class="cta-btn" href="/login">Login</a></li>
+          <!-- <li><a class="cta-btn" href="/login">Login</a></li> -->
           @endif
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

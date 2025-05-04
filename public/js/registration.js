@@ -7,6 +7,7 @@ function register() {
     var registration_attending = $('input[name="new_registration_attending"]:checked').val() 
     var registration_location = $('input[name="registration_location"]:checked').val()
     var registration_doctor = $('input[name="registration_doctor"]:checked').val()
+    var registration_university = $('select[name="registration_university"]').find(":selected").val();
 
     var phone_format = new RegExp('^(3|70|71|76|78|79|81)|(03|70|71|76|78|79|81)\d{6}$');
     registration_phone = registration_phone.replaceAll(" ", "")
@@ -24,7 +25,7 @@ function register() {
         registration_phone && 
         registration_attending && 
         registration_doctor && 
-        ( (registration_doctor == 1 && registration_lda_id && registration_location) || registration_doctor == 0 ) 
+        ( (registration_doctor == 1 && registration_lda_id && registration_location) || (registration_doctor == 0 && registration_university) ) 
     ) {
         $.post("/registration",
         {
@@ -37,6 +38,7 @@ function register() {
             email: registration_email,
             attending: registration_attending,
             doctor: registration_doctor,
+            university: registration_university,
         }).done( function(data) {
             $('#exampleModalToggle2').modal('hide');
             $("#registration_name").val("")
@@ -92,9 +94,11 @@ $( document ).ready(function() {
         if (registration_doctor == "1") {
             $(".lda_id_div").removeClass( "d-none" )
             $(".clinic_location_div").removeClass( "d-none" )
+            $(".university_div").addClass( "d-none" )
         } else {
             $(".lda_id_div").addClass( "d-none" )
             $(".clinic_location_div").addClass( "d-none" )
+            $(".university_div").removeClass( "d-none" )
         }
     } );
 });

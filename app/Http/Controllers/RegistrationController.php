@@ -57,6 +57,7 @@ class RegistrationController extends Controller
             $registration->email = $all_data["email"];
             $registration->attending = $all_data["attending"];
             $registration->doctor = $all_data["doctor"];
+            $registration->university = $all_data["university"];
             $registration->event_id = $all_data["event_id"];
             $registration->save();
             return response()->json([

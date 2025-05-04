@@ -55,6 +55,17 @@
                 <label class="form-check-label" for="registration_location_other">Other</label>
             </div>
         </div>
+        <div class="mb-3 university_div d-none">
+            <label for="exampleFormControlInput5" class="form-label">University ? *</label>
+            <select class="form-control" aria-label="Default select example" name="registration_university">
+              <option value="" selected>Select University</option>
+              <option value="1">Beirut Arab University</option>
+              <option value="2">Lebanese University</option>
+              <option value="3">University of Saint Joseph</option>
+              <option value="4">American University of Beirut</option>
+              <option value="5">Other</option>
+            </select>
+        </div>
         <div class="mb-3">
             <!-- <span class="text-warning"> Sorry! All the places are reserved for the lunch </span><br> -->
             <label for="exampleFormControlInput6" class="form-label">Are you interested in attending the lunch break ? *</label>

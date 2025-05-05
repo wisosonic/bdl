@@ -63,7 +63,7 @@
 
 <style>
   #intro {
-    background: url(/img/site/backgrounds/{{$event->cover}}) top center;
+    background: url({{asset('storage/' . $event->cover)}}) top center;
     background-size: contain;
     --background-color: #000910;
     height: 60vh;
@@ -112,7 +112,6 @@
     <!--==========================
       About Section
     ============================-->
-    @include($lang."/admin/sidebar")
     @yield("content")
   </main>
 

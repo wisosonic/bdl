@@ -112,11 +112,6 @@
                         @else
                             <td>Other</td>
                         @endif
-                        @if ($value->attending)
-                            <td>Yes</td>
-                        @else
-                            <td>No</td>
-                        @endif
                         @if ($value->university)
                             @if ($value->university == 1)
                                 <td>BAU</td>
@@ -131,6 +126,11 @@
                             @endif
                         @else
                             <td>-</td>
+                        @endif
+                        @if ($value->attending)
+                            <td>Yes</td>
+                        @else
+                            <td>No</td>
                         @endif
                         @if ($value->presence)
                             <td>Yes</td>

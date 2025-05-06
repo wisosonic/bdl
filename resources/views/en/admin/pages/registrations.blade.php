@@ -15,14 +15,14 @@
             <div class="card-body">
                 <h4 class="card-title"><b>Stats</b></h4>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <h4 class="card-subtitle mb-2 text-body-secondary"><b>Total Registrations</b></h4>
                         <p class="card-text">
                             {{$all_registrations->count()}}
                         </p>
                     </div>
-                    <div class="col-md-2">
-                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>Attending Lunch</b></h6>
+                    <div class="col-md-1">
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>Lunch</b></h6>
                         <p class="card-text">
                             Yes: {{$all_registrations->where("attending", 1)->count()}}<br>
                             No: {{$all_registrations->where("attending", 0)->count()}}
@@ -41,6 +41,16 @@
                             Beirut: {{$all_registrations->where("location", "1")->count()}}<br>
                             Other: {{$all_registrations->where("location", "0")->count()}}<br>
                             No Clinic: {{$all_registrations->where("location", null)->count()}}
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <h6 class="card-subtitle mb-2 text-body-secondary"><b>University</b></h6>
+                        <p class="card-text">
+                            BAU: {{$all_registrations->where("university", "1")->count()}}<br>
+                            LU: {{$all_registrations->where("university", "2")->count()}}<br>
+                            USJ: {{$all_registrations->where("university", "3")->count()}}<br>
+                            AUB: {{$all_registrations->where("university", "4")->count()}}<br>
+                            Other: {{$all_registrations->where("university", "5")->count()}}
                         </p>
                     </div>
                     <div class="col-md-2">
@@ -135,7 +145,7 @@
 <script>
     setTimeout(() => {
         document.getElementById("intro").scrollIntoView({behavior: 'smooth'});
-    }, 5000);
+    }, 200);
 
     let table = new DataTable('#registrationsTable', {
         initComplete: function () {

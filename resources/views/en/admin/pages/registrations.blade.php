@@ -75,11 +75,13 @@
                         <th>Dr/Stud</th>
                         <th>LDA ID</th>
                         <th>Clinic location</th>
+                        <th>University</th>
                         <th>Lunch</th>
                         <th>Presence</th>
                         <th>Actions</th>
                     </tr>
                     <tr>
+                        <td class='colsearch'></td>
                         <td class='colsearch'></td>
                         <td class='colsearch'></td>
                         <td class='colsearch'></td>
@@ -114,6 +116,21 @@
                             <td>Yes</td>
                         @else
                             <td>No</td>
+                        @endif
+                        @if ($value->university)
+                            @if ($value->university == 1)
+                                <td>BAU</td>
+                            @elseif ($value->university == 2)
+                                <td>LU</td>
+                            @elseif ($value->university == 3)
+                                <td>USJ</td>
+                            @elseif ($value->university == 4)
+                                <td>AUB</td>
+                            @elseif ($value->university == 5)
+                                <td>Other</td>
+                            @endif
+                        @else
+                            <td>-</td>
                         @endif
                         @if ($value->presence)
                             <td>Yes</td>

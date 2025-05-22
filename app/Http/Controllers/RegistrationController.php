@@ -55,7 +55,8 @@ class RegistrationController extends Controller
             $registration->lda_id = $all_data["lda_id"];
             $registration->location = $all_data["location"];
             $registration->email = $all_data["email"];
-            $registration->attending = $all_data["attending"];
+            // $registration->attending = $all_data["attending"];
+            $registration->attending = 0;
             $registration->doctor = $all_data["doctor"];
             $registration->university = $all_data["university"];
             $registration->event_id = $all_data["event_id"];

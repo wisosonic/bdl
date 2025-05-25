@@ -39,9 +39,9 @@ class AdminController extends GeneralController
         $all_data = $request->request->all();
         $registration = Registration::find($registration_id);
         if ($registration) {
-            $v = $request->validate([
-                'lda_id' => 'sometimes|unique:registrations,lda_id,' . $registration_id,
-            ]);
+            // $v = $request->validate([
+            //     'lda_id' => 'sometimes|unique:registrations,lda_id,' . $registration_id,
+            // ]);
             $registration->name = $all_data["name"];
             $registration->phone = $all_data["phone"];
             $registration->lda_id = $all_data["lda_id"];
